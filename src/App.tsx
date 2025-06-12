@@ -14,7 +14,7 @@ type FormValues = {
   seq2: string;
 };
 
-const AA_REGEX = /^[A-Z\\-]+$/i;
+const AA_REGEX = /^[ARNDCEQGHILKMFPSTWYV\\-]+$/i;
 
 const App: React.FC = () => {
   const {
@@ -37,15 +37,18 @@ const App: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="sm" sx={{ py: 4 }}>
-      <Typography variant="h5" gutterBottom>
+    <Container 
+      maxWidth='sm' 
+      sx={{ py: 4, marginTop: '70px'}} 
+    >
+      <Typography variant="h4" component={'h1'} gutterBottom>
         Аминокислотное выравнивание
       </Typography>
       <Box
         component="form"
         onSubmit={handleSubmit(onSubmit)}
         noValidate
-        sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
+        sx={{ display: 'flex', flexDirection: 'column', gap: 2, marginTop: '20px' }}
       >
         <Controller
           name="seq1"
@@ -54,7 +57,7 @@ const App: React.FC = () => {
             required: 'Обязательное поле',
             pattern: {
               value: AA_REGEX,
-              message: 'Только латинские буквы A–Z и дефис'
+              message: 'Только буквы VLSPADKTNIKASWEKIGSHG и дефис'
             },
             validate: (value) =>
               value === value.toUpperCase() || 'Допускаются только ЗАГЛАВНЫЕ буквы'
@@ -100,7 +103,7 @@ const App: React.FC = () => {
             />
           )}
         />
-        <Button type="submit" variant="contained" disabled={!isValid}>
+        <Button type="submit" variant="contained" disabled={!isValid} sx={{marginTop: '20px'}}>
           Выровнять
         </Button>
       </Box>

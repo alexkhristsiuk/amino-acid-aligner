@@ -8,11 +8,10 @@ interface Props {
 }
 
 export const AlignmentViewer: React.FC<Props> = ({ seq1, seq2 }) => {
-  const renderLine = (s: string, highlightDiffs = false) => (
-    <Box display="flex" flexWrap="wrap" gap={0.1} marginBottom={0.5}>
+  const renderLine = (s: string) => (
+    <Box display="flex" flexWrap="wrap" gap={0.1} marginBottom={1}>
       {s.split('').map((ch, i) => {
-        const isDiff = highlightDiffs && seq1[i] !== seq2[i];
-        const bg = isDiff ? "#FFCDD2" : COLORS[ch] || "#FFFFFF";
+        const bg = COLORS[ch] || "#FFFFFF";
         return (
           <Box
             key={i}
@@ -34,8 +33,8 @@ export const AlignmentViewer: React.FC<Props> = ({ seq1, seq2 }) => {
 
   return (
     <Box mt={2}>
-      {renderLine(seq1, false)}
-      {renderLine(seq2, true)}
+      {renderLine(seq1)}
+      {renderLine(seq2)}
     </Box>
   );
 };
