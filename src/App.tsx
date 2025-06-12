@@ -14,7 +14,7 @@ type FormValues = {
   seq2: string;
 };
 
-const AA_REGEX = /^[ARNDCEQGHILKMFPSTWYV\\-]+$/i;
+const INPUT_REGEX = /^[ARNDCEQGHILKMFPSTWYV\\-]+$/i;
 
 const App: React.FC = () => {
   const {
@@ -56,7 +56,7 @@ const App: React.FC = () => {
           rules={{
             required: 'Обязательное поле',
             pattern: {
-              value: AA_REGEX,
+              value: INPUT_REGEX,
               message: 'Только буквы VLSPADKTNIKASWEKIGSHG и дефис'
             },
             validate: (value) =>
@@ -84,7 +84,7 @@ const App: React.FC = () => {
           rules={{
             required: 'Обязательное поле',
             pattern: {
-              value: AA_REGEX,
+              value: INPUT_REGEX,
               message: 'Только латинские буквы A–Z и дефис'
             },
             validate: (value) =>
